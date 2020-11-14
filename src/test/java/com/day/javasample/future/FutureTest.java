@@ -27,7 +27,7 @@ public class FutureTest {
         final Future<String> fResp01 = executorService.submit(() -> sendRequestWithDelay(5000));
         final Future<String> fResp02 = executorService.submit(() -> sendRequestWithDelay(2000));
 
-        log.info("r1='{}'; r2='{}'; totalMs={}", fResp01.get(), fResp02.get(), System.currentTimeMillis() - start);
+        log.info("r1='{}'; r2='{}'; usedMs={}", fResp01.get(), fResp02.get(), System.currentTimeMillis() - start);
     }
 
     private String sendRequestWithDelay(int ms) throws InterruptedException {
