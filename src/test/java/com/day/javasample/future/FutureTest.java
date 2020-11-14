@@ -9,6 +9,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import static java.lang.String.format;
+
 @Slf4j
 public class FutureTest {
 
@@ -22,14 +24,14 @@ public class FutureTest {
 
         final ExecutorService executorService = Executors.newFixedThreadPool(2);
 
-        final Future<String> fResponse01 = executorService.submit(() -> sendRequestWithDelay(5000));
-        final Future<String> fResponse02 = executorService.submit(() -> sendRequestWithDelay(2000));
+        final Future<String> fResp01 = executorService.submit(() -> sendRequestWithDelay(5000));
+        final Future<String> fResp02 = executorService.submit(() -> sendRequestWithDelay(2000));
 
-        log.info("r1='{}'; r2='{}'; totalMs={}", fResponse01.get(), fResponse02.get(), System.currentTimeMillis() - start);
+        log.info("r1='{}'; r2='{}'; totalMs={}", fResp01.get(), fResp02.get(), System.currentTimeMillis() - start);
     }
 
-    private String sendRequestWithDelay(int delayInMs) throws InterruptedException {
-        Thread.sleep(delayInMs);
-        return String.format("Response with delay of %d ms and received sequence %d", delayInMs, counter.getAndIncrement());
+    private String sendRequestWithDelay(int ms) throws InterruptedException {
+        Thread.sleep(ms); //imagine a real outgoing call that has a response time of <ms>
+        return format("Response with delay of %d ms and received with sequence %d", ms, counter.getAndIncrement());
     }
 }
