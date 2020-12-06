@@ -9,7 +9,11 @@ public class Rover {
     public String execute(String command) {
         if (command.startsWith("L")) {
             for (int i = 0; i < command.length(); i++) {
-                turnLeft();
+                if ('L' == command.toCharArray()[i]) {
+                    turnLeft();
+                } else {
+                    turnRight();
+                }
             }
         } else if (command.startsWith("R")) {
             for (int i = 0; i < command.length(); i++) {
