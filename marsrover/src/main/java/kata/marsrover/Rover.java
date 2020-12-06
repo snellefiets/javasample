@@ -14,6 +14,8 @@ public class Rover {
                 } else if ('M' == c){
                     if ("W".equals(direction)) {
                         xPosition -= 1;
+                    } else if ("S".equals(direction)) {
+                        yPosition -= 1;
                     } else {
                         xPosition += 1;
                     }
