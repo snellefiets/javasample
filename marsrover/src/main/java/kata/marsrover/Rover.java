@@ -11,16 +11,10 @@ public class Rover {
             for (int i = 0; i < command.length(); i++) {
                 turnLeft();
             }
-        } else if ("R".equals(command)) {
-            direction = "E";
-        } else if ("RR".equals(command)) {
-            direction = "S";
-        } else if ("RRR".equals(command)) {
-            direction = "W";
-        } else if ("RRRR".equals(command)) {
-            direction = "N";
-        } else if ("RRRRR".equals(command)) {
-            direction = "E";
+        } else if (command.startsWith("R")) {
+            for (int i = 0; i < command.length(); i++) {
+                turnRight();
+            }
         } else {
             yPosition += command.length();
         }
@@ -36,6 +30,18 @@ public class Rover {
         } else if ("S".equals(direction)) {
             direction = "E";
         } else if ("E".equals(direction)) {
+            direction = "N";
+        }
+    }
+
+    private void turnRight() {
+        if ("N".equals(direction)) {
+            direction = "E";
+        } else if ("E".equals(direction)) {
+            direction = "S";
+        } else if ("S".equals(direction)) {
+            direction = "W";
+        } else if ("W".equals(direction)) {
             direction = "N";
         }
     }
