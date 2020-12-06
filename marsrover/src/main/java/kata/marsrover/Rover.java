@@ -12,7 +12,11 @@ public class Rover {
                 if ('L' == c) {
                     turnLeft();
                 } else if ('M' == c){
-                    xPosition += 1;
+                    if ("W".equals(direction)) {
+                        xPosition -= 1;
+                    } else {
+                        xPosition += 1;
+                    }
                 } else {
                     turnRight();
                 }

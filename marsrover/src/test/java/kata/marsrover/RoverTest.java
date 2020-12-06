@@ -29,6 +29,7 @@ public class RoverTest {
             "MMMM, 0-4- N",
             "RM, 1-0- E",
             "RMM, 2-0- E",
+            "LM, -1-0- W",
     })
     void should_move(String givenCommand, String expectedResult) {
         assertThat(rover.execute(givenCommand)).isEqualTo(expectedResult);
