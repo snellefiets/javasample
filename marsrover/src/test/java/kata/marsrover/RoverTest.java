@@ -38,7 +38,6 @@ public class RoverTest {
             "LL, 0-0- S",
             "LLL, 0-0- E",
             "LLLL, 0-0- N",
-            "LLLLL, 0-0- W"
     })
     void should_turn_left(String givenCommand, String expectedResult) {
         assertThat(rover.execute(givenCommand)).isEqualTo(expectedResult);
@@ -50,7 +49,6 @@ public class RoverTest {
             "RR, 0-0- S",
             "RRR, 0-0- W",
             "RRRR, 0-0- N",
-            "RRRRR, 0-0- E",
     })
     void should_turn_right(String givenCommand, String expectedResult) {
         assertThat(rover.execute(givenCommand)).isEqualTo(expectedResult);
@@ -66,8 +64,10 @@ public class RoverTest {
             "LRR, 0-0- E",
             "LRRR, 0-0- S",
             "LRRRR, 0-0- W",
+            "RRRRR, 0-0- E",
+            "LLLLL, 0-0- W"
     })
-    void should_turn_to_different_directions(String givenCommand, String expectedResult) {
+    void should_turn(String givenCommand, String expectedResult) {
         assertThat(rover.execute(givenCommand)).isEqualTo(expectedResult);
     }
 
