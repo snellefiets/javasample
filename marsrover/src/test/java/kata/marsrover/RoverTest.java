@@ -47,7 +47,7 @@ public class RoverTest {
     @ParameterizedTest
     @CsvSource({
             "R, 0-0- E",
-//            "RR, 0-0- S",
+            "RR, 0-0- S",
 //            "RRR, 0-0- W",
 //            "RRRR, 0-0- N",
 //            "RRRRR, 0-0- E",

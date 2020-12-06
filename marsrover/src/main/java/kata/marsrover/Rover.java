@@ -13,6 +13,8 @@ public class Rover {
             }
         } else if ("R".equals(command)) {
             direction = "E";
+        } else if ("RR".equals(command)) {
+            direction = "S";
         } else {
             yPosition += command.length();
         }
