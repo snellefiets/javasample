@@ -66,7 +66,6 @@ public class RoverTest {
             "LRR, 0-0- E",
             "LRRR, 0-0- S",
             "LRRRR, 0-0- W",
-
     })
     void should_turn_to_different_directions(String givenCommand, String expectedResult) {
         assertThat(rover.execute(givenCommand)).isEqualTo(expectedResult);
