@@ -7,18 +7,15 @@ public class Rover {
     private String direction = "N";
 
     public String execute(String command) {
-        if (command.startsWith("L") || command.startsWith("R")) {
-            for (char c : command.toCharArray()) {
-                if ('L' == c) {
-                    turnLeft();
-                } else if ('M' == c){
-                    move();
-                } else {
-                    turnRight();
-                }
+
+        for (char c : command.toCharArray()) {
+            if ('L' == c) {
+                turnLeft();
+            } else if ('M' == c) {
+                move();
+            } else {
+                turnRight();
             }
-        } else {
-            yPosition += command.length();
         }
 
         return String.format("%d-%d- %s", xPosition, yPosition, direction);
