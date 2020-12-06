@@ -23,11 +23,11 @@ public class RoverTest {
 
     @ParameterizedTest
     @CsvSource({
-            "M, 0-1- M",
-            "MM, 0-2- M"
+            "M, 0-1- N",
+            "MM, 0-2- N",
     })
     void should_move(String givenCommand, String expectedResult) {
-        assertThat(rover.execute("M")).isEqualTo("0-1- N");
+        assertThat(rover.execute(givenCommand)).isEqualTo(expectedResult);
     }
 
 }
