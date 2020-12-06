@@ -32,4 +32,9 @@ public class RoverTest {
         assertThat(rover.execute(givenCommand)).isEqualTo(expectedResult);
     }
 
+    @Test
+    void should_turn_left() {
+        assertThat(rover.execute("L")).isEqualTo("0-0- W");
+    }
+
 }
