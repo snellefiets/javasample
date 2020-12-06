@@ -13,7 +13,11 @@ public class Rover {
             }
         } else if (command.startsWith("R")) {
             for (int i = 0; i < command.length(); i++) {
-                turnRight();
+                if ('L' == command.toCharArray()[i]) {
+                    turnLeft();
+                } else {
+                    turnRight();
+                }
             }
         } else {
             yPosition += command.length();

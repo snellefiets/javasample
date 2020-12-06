@@ -56,4 +56,12 @@ public class RoverTest {
         assertThat(rover.execute(givenCommand)).isEqualTo(expectedResult);
     }
 
+    @ParameterizedTest
+    @CsvSource({
+            "RL, 0-0- N",
+    })
+    void should_turn_to_different_directions(String givenCommand, String expectedResult) {
+        assertThat(rover.execute(givenCommand)).isEqualTo(expectedResult);
+    }
+
 }
