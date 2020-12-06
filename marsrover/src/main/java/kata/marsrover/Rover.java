@@ -9,6 +9,8 @@ public class Rover {
     public String execute(String command) {
         if ("L".equals(command)) {
             direction = "W";
+        } else if ("LL".equals(command)) {
+            direction = "S";
         } else {
             yPosition += command.length();
         }

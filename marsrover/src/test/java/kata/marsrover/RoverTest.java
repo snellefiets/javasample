@@ -37,4 +37,9 @@ public class RoverTest {
         assertThat(rover.execute("L")).isEqualTo("0-0- W");
     }
 
+    @Test
+    void should_turn_left_twice() {
+        assertThat(rover.execute("LL")).isEqualTo("0-0- S");
+    }
+
 }
