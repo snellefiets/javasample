@@ -24,4 +24,8 @@ public class RoverTest {
         assertThat(rover.execute("M")).isEqualTo("0-1- N");
     }
 
+    @Test
+    void should_move_twice() {
+        assertThat(rover.execute("MM")).isEqualTo("0-2- N");
+    }
 }
