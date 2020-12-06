@@ -11,6 +11,8 @@ public class Rover {
             for (int i = 0; i < command.length(); i++) {
                 turnLeft();
             }
+        } else if ("R".equals(command)) {
+            direction = "E";
         } else {
             yPosition += command.length();
         }
