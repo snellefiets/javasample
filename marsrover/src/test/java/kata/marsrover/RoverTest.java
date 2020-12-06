@@ -32,14 +32,13 @@ public class RoverTest {
         assertThat(rover.execute(givenCommand)).isEqualTo(expectedResult);
     }
 
-    @Test
-    void should_turn_left() {
-        assertThat(rover.execute("L")).isEqualTo("0-0- W");
-    }
-
-    @Test
-    void should_turn_left_twice() {
-        assertThat(rover.execute("LL")).isEqualTo("0-0- S");
+    @ParameterizedTest
+    @CsvSource({
+            "L, 0-0- W",
+            "LL, 0-0- S"
+    })
+    void should_turn_left(String givenCommand, String expectedResult) {
+        assertThat(rover.execute(givenCommand)).isEqualTo(expectedResult);
     }
 
 }
