@@ -35,7 +35,10 @@ public class RoverTest {
     @ParameterizedTest
     @CsvSource({
             "L, 0-0- W",
-            "LL, 0-0- S"
+            "LL, 0-0- S",
+            "LLL, 0-0- E",
+            "LLLL, 0-0- N",
+            "LLLLL, 0-0- W"
     })
     void should_turn_left(String givenCommand, String expectedResult) {
         assertThat(rover.execute(givenCommand)).isEqualTo(expectedResult);
