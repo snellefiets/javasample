@@ -2,8 +2,7 @@ package kata.marsrover;
 
 public class Rover {
 
-    private int xPosition = 0;
-    private int yPosition = 0;
+    private Coordinate position = new Coordinate(0, 0);
     private String direction = "N";
 
     public String execute(String command) {
@@ -18,18 +17,18 @@ public class Rover {
             }
         }
 
-        return String.format("%d-%d- %s", xPosition, yPosition, direction);
+        return String.format("%d-%d- %s", position.getX(), position.getY(), direction);
     }
 
     private void move() {
         if ("W".equals(direction)) {
-            xPosition -= 1;
+            position.setX( position.getX() - 1);
         } else if ("S".equals(direction)) {
-            yPosition -= 1;
+            position.setY( position.getY() - 1);
         } else if ("N".equals(direction)) {
-            yPosition += 1;
+            position.setY( position.getY() + 1);
         } else {
-            xPosition += 1;
+            position.setX( position.getX() + 1);
         }
     }
 
