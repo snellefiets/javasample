@@ -15,6 +15,12 @@ public class Rover {
             direction = "E";
         } else if ("RR".equals(command)) {
             direction = "S";
+        } else if ("RRR".equals(command)) {
+            direction = "W";
+        } else if ("RRRR".equals(command)) {
+            direction = "N";
+        } else if ("RRRRR".equals(command)) {
+            direction = "E";
         } else {
             yPosition += command.length();
         }
