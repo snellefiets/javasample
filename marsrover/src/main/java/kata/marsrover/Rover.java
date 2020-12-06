@@ -12,15 +12,7 @@ public class Rover {
                 if ('L' == c) {
                     turnLeft();
                 } else if ('M' == c){
-                    if ("W".equals(direction)) {
-                        xPosition -= 1;
-                    } else if ("S".equals(direction)) {
-                        yPosition -= 1;
-                    } else if ("N".equals(direction)) {
-                        yPosition += 1;
-                    } else {
-                        xPosition += 1;
-                    }
+                    move();
                 } else {
                     turnRight();
                 }
@@ -30,6 +22,18 @@ public class Rover {
         }
 
         return String.format("%d-%d- %s", xPosition, yPosition, direction);
+    }
+
+    private void move() {
+        if ("W".equals(direction)) {
+            xPosition -= 1;
+        } else if ("S".equals(direction)) {
+            yPosition -= 1;
+        } else if ("N".equals(direction)) {
+            yPosition += 1;
+        } else {
+            xPosition += 1;
+        }
     }
 
     private void turnLeft() {
