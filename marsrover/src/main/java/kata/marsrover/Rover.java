@@ -11,6 +11,8 @@ public class Rover {
             for (char c : command.toCharArray()) {
                 if ('L' == c) {
                     turnLeft();
+                } else if ('M' == c){
+                    xPosition += 1;
                 } else {
                     turnRight();
                 }
