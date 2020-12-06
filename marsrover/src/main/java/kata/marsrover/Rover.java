@@ -8,8 +8,8 @@ public class Rover {
 
     public String execute(String command) {
         if (command.startsWith("L") || command.startsWith("R")) {
-            for (int i = 0; i < command.length(); i++) {
-                if ('L' == command.toCharArray()[i]) {
+            for (char c : command.toCharArray()) {
+                if ('L' == c) {
                     turnLeft();
                 } else {
                     turnRight();
