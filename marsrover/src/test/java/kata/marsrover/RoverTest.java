@@ -2,6 +2,8 @@ package kata.marsrover;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -19,13 +21,13 @@ public class RoverTest {
         assertThat(rover.execute("")).isEqualTo("0-0- N");
     }
 
-    @Test
-    void should_move() {
+    @ParameterizedTest
+    @CsvSource({
+            "M, 0-1- M",
+            "MM, 0-2- M"
+    })
+    void should_move(String givenCommand, String expectedResult) {
         assertThat(rover.execute("M")).isEqualTo("0-1- N");
     }
 
-    @Test
-    void should_move_twice() {
-        assertThat(rover.execute("MM")).isEqualTo("0-2- N");
-    }
 }
