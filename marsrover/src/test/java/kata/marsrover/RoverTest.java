@@ -43,7 +43,8 @@ public class RoverTest {
             "LRRR, 0-0- S",
             "LRRRR, 0-0- W",
             "RRRRR, 0-0- E",
-            "LLLLL, 0-0- W"
+            "LLLLL, 0-0- W",
+            "RLRL, 0-0- N"
     })
     void should_turn(String givenCommand, String expectedResult) {
         assertThat(rover.execute(givenCommand)).isEqualTo(expectedResult);
