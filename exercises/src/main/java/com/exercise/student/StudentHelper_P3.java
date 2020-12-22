@@ -3,7 +3,7 @@ package com.exercise.student;
 public class StudentHelper_P3 {
     public static final int MATH_MARKUP = 5;
     public static final int YES_LOWER_LIMIT = 80;
-    public static final int MAYBE_LOWER_LIMIT = 21;
+    public static final int NO_LIMIT = 20;
 
     /*  PROBLEM 3
      * You and your Friend are planning to enter a Subject Quiz.
@@ -22,15 +22,14 @@ public class StudentHelper_P3 {
      */
 
     public String willQualifyForQuiz(int myMarks, int friendsMarks, boolean isMaths) {
-        final int highestMarks = Math.max(myMarks, friendsMarks);
         final int markup = isMaths ? MATH_MARKUP : 0;
 
-        if (highestMarks >= YES_LOWER_LIMIT + markup)
-            return "YES";
-        else if (highestMarks >= MAYBE_LOWER_LIMIT + markup)
-            return "MAYBE";
-        else
+        if (Math.min(myMarks, friendsMarks) <= NO_LIMIT + markup)
             return "NO";
+        else if (Math.max(myMarks, friendsMarks) >= YES_LOWER_LIMIT + markup)
+            return "YES";
+        else
+            return "MAYBE";
     }
 
 }
