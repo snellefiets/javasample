@@ -1,8 +1,7 @@
 package com.exercise.student;
 
 import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,54 +13,46 @@ public class StudentHelperP3Test {
     @Nested
     class willQualifyForQuiz_should {
 
-        public static final boolean NON_MATHS = false;
+        private static final boolean NON_MATHS = false;
         private static final boolean MATHS = true;
-        public static final int YES_COMMON_LOWER_LIMIT = 80;
-        public static final int MAYBE_COMMON_LOWER_LIMIT = 21;
-        public static final int YES_MATHS_LOWER_LIMIT = 85;
-        public static final int MAYBE_MATHS_LOWER_LIMIT = 26;
+        private static final int YES_COMMON_LOWER_LIMIT = 80;
+        private static final int NO_COMMON_UPPER_LIMIT = 20;
+        private static final int YES_MATHS_LOWER_LIMIT = 85;
+        private static final int NO_MATHS_UPPER_LIMIT = 25;
+        private static final int MAYBE_DEFAULT_VALUE = 50;
 
-        @ParameterizedTest
-        @ValueSource(ints = {YES_COMMON_LOWER_LIMIT, YES_COMMON_LOWER_LIMIT + 15})
-        void return_YES_for_subject_non_maths(int mark) {
-            assertThat(helper.willQualifyForQuiz(mark, 0, NON_MATHS)).isEqualTo("YES");
-            assertThat(helper.willQualifyForQuiz(0, mark, NON_MATHS)).isEqualTo("YES");
+        @Test
+        void return_NO_when_at_least_one_is_notGood() {
+            assertThat(helper.willQualifyForQuiz(NO_COMMON_UPPER_LIMIT, MAYBE_DEFAULT_VALUE, NON_MATHS)).isEqualTo("NO");
+            assertThat(helper.willQualifyForQuiz(MAYBE_DEFAULT_VALUE, NO_COMMON_UPPER_LIMIT, NON_MATHS)).isEqualTo("NO");
+            assertThat(helper.willQualifyForQuiz(NO_COMMON_UPPER_LIMIT, NO_COMMON_UPPER_LIMIT, NON_MATHS)).isEqualTo("NO");
+
+            assertThat(helper.willQualifyForQuiz(NO_MATHS_UPPER_LIMIT, MAYBE_DEFAULT_VALUE, MATHS)).isEqualTo("NO");
+            assertThat(helper.willQualifyForQuiz(MAYBE_DEFAULT_VALUE, NO_MATHS_UPPER_LIMIT, MATHS)).isEqualTo("NO");
+            assertThat(helper.willQualifyForQuiz(NO_MATHS_UPPER_LIMIT, NO_MATHS_UPPER_LIMIT, MATHS)).isEqualTo("NO");
         }
 
-        @ParameterizedTest
-        @ValueSource(ints = {MAYBE_COMMON_LOWER_LIMIT, YES_COMMON_LOWER_LIMIT - 1})
-        void return_MAYBE_for_subject_non_maths(int mark) {
-            assertThat(helper.willQualifyForQuiz(mark, 0, NON_MATHS)).isEqualTo("MAYBE");
-            assertThat(helper.willQualifyForQuiz(0, mark, NON_MATHS)).isEqualTo("MAYBE");
+        @Test
+        void return_YES_when_at_least_one_isGood_but_nobody_is_notGood() {
+            assertThat(helper.willQualifyForQuiz(YES_COMMON_LOWER_LIMIT, MAYBE_DEFAULT_VALUE, NON_MATHS)).isEqualTo("YES");
+            assertThat(helper.willQualifyForQuiz(MAYBE_DEFAULT_VALUE, YES_COMMON_LOWER_LIMIT, NON_MATHS)).isEqualTo("YES");
+            assertThat(helper.willQualifyForQuiz(YES_COMMON_LOWER_LIMIT, YES_COMMON_LOWER_LIMIT, NON_MATHS)).isEqualTo("YES");
+
+            assertThat(helper.willQualifyForQuiz(YES_MATHS_LOWER_LIMIT, MAYBE_DEFAULT_VALUE, MATHS)).isEqualTo("YES");
+            assertThat(helper.willQualifyForQuiz(MAYBE_DEFAULT_VALUE, YES_MATHS_LOWER_LIMIT, MATHS)).isEqualTo("YES");
+            assertThat(helper.willQualifyForQuiz(YES_MATHS_LOWER_LIMIT, YES_MATHS_LOWER_LIMIT, MATHS)).isEqualTo("YES");
         }
 
-        @ParameterizedTest
-        @ValueSource(ints = {0, MAYBE_COMMON_LOWER_LIMIT - 1})
-        void return_NO_for_subject_non_maths(int mark) {
-            assertThat(helper.willQualifyForQuiz(mark, 0, NON_MATHS)).isEqualTo("NO");
-            assertThat(helper.willQualifyForQuiz(0, mark, NON_MATHS)).isEqualTo("NO");
+        @Test
+        void return_MAYBE_when_both_are_neither_good_nor_bad() {
+            assertThat(helper.willQualifyForQuiz(YES_COMMON_LOWER_LIMIT - 1, NO_COMMON_UPPER_LIMIT + 1, NON_MATHS)).isEqualTo("MAYBE");
+            assertThat(helper.willQualifyForQuiz(NO_COMMON_UPPER_LIMIT + 1, YES_COMMON_LOWER_LIMIT - 1, NON_MATHS)).isEqualTo("MAYBE");
+
+            assertThat(helper.willQualifyForQuiz(YES_MATHS_LOWER_LIMIT - 1, NO_MATHS_UPPER_LIMIT + 1, MATHS)).isEqualTo("MAYBE");
+            assertThat(helper.willQualifyForQuiz(NO_MATHS_UPPER_LIMIT + 1, YES_MATHS_LOWER_LIMIT - 1, MATHS)).isEqualTo("MAYBE");
+
         }
 
-        @ParameterizedTest
-        @ValueSource(ints = {YES_MATHS_LOWER_LIMIT, YES_MATHS_LOWER_LIMIT + 15})
-        void return_YES_for_subject_maths(int mark) {
-            assertThat(helper.willQualifyForQuiz(mark, 0, MATHS)).isEqualTo("YES");
-            assertThat(helper.willQualifyForQuiz(0, mark, MATHS)).isEqualTo("YES");
-        }
-
-        @ParameterizedTest
-        @ValueSource(ints = {MAYBE_MATHS_LOWER_LIMIT, YES_MATHS_LOWER_LIMIT - 1})
-        void return_MAYBE_for_subject_maths(int mark) {
-            assertThat(helper.willQualifyForQuiz(mark, 0, MATHS)).isEqualTo("MAYBE");
-            assertThat(helper.willQualifyForQuiz(0, mark, MATHS)).isEqualTo("MAYBE");
-        }
-
-        @ParameterizedTest
-        @ValueSource(ints = {0, MAYBE_MATHS_LOWER_LIMIT - 1})
-        void return_NO_for_subject_maths(int mark) {
-            assertThat(helper.willQualifyForQuiz(mark, 0, MATHS)).isEqualTo("NO");
-            assertThat(helper.willQualifyForQuiz(0, mark, MATHS)).isEqualTo("NO");
-        }
 
     }
 
