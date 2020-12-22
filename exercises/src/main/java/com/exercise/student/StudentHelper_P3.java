@@ -1,51 +1,7 @@
 package com.exercise.student;
 public class StudentHelper_P3 {
 
-	private static final int GRADE_B_LOWER_LIMIT = 51;
-	private static final int GRADE_B_UPPER_LIMIT = 80;
-	private static final int MATH_MARKUP = 10;
-
-	/* PROBLEM 1 */
-	/*
-	* You get a grade B if marks are between 51 and 80 (both inclusive). Except for Maths where the upper limit is increased by 10.
-	*/
-	public boolean isGradeB(int marks, boolean isMaths) {
-		final int markup = isMaths ? MATH_MARKUP : 0;
-		final int upperLimit = GRADE_B_UPPER_LIMIT + markup;
-		return marks>= GRADE_B_LOWER_LIMIT && marks<=upperLimit;
-	}
-
-	/* PROBLEM 2 */
-	/*
-	You are awarded a grade based on your marks.
-	Grade A = 91 to 100, Grade B = 51 to 90, Otherwise Grade C
-	Except for Maths where marks to get a Grade are 5 higher than required for other subjects.
-	*/
-
-	public String getGrade(int mark, boolean isMaths) {
-		String grade = "C";
-		
-		if (isGradeA(mark, isMaths))
-			grade = "A";
-		else if (isBGrade(mark, isMaths)) {
-			grade = "B";
-		}
-		return grade;
-	}
-
-	private boolean isGradeA(int mark, boolean isMaths) {
-		int lowerLimitForAGrade = isMaths ? 95
-				: 90;
-		return mark > lowerLimitForAGrade;
-	}
-
-	private boolean isBGrade(int mark, boolean isMaths) {
-		int lowerLimitGradeB = isMaths ? 55
-				: 50;
-		return mark > lowerLimitGradeB && mark < 90;
-	}
-
-    /*  PROBLEM 3
+	/*  PROBLEM 3
      * You and your Friend are planning to enter a Subject Quiz.
      * However, there is a marks requirement that you should attain to qualify.
      * 
