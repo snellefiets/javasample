@@ -13,24 +13,13 @@ public class StudentHelper_P2 {
 	*/
 
     public String getGrade(int mark, boolean isMaths) {
-        if (isGradeA(mark, isMaths))
+        final int markup = isMaths ? MATH_MARKUP : 0;
+        if (mark >= GRADE_A_LOWER_LIMIT + markup)
             return "A";
-        else if (isGradeB(mark, isMaths))
+        else if (mark >= GRADE_B_LOWER_LIMIT + markup)
             return "B";
         else
             return "C";
-    }
-
-    private boolean isGradeA(int mark, boolean isMaths) {
-        final int lowerLimitGradeA_maths = GRADE_A_LOWER_LIMIT + MATH_MARKUP;
-        final int lowerLimitGradeA = isMaths ? lowerLimitGradeA_maths : GRADE_A_LOWER_LIMIT;
-        return mark >= lowerLimitGradeA;
-    }
-
-    private boolean isGradeB(int mark, boolean isMaths) {
-        final int lowerLimitGradeB_maths = GRADE_B_LOWER_LIMIT + MATH_MARKUP;
-        final int lowerLimitGradeB = isMaths ? lowerLimitGradeB_maths : GRADE_B_LOWER_LIMIT;
-        return mark >= lowerLimitGradeB;
     }
 
 
