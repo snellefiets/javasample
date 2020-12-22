@@ -21,26 +21,26 @@ public class StudentHelperP1Test {
 
 		@ParameterizedTest
 		@ValueSource(ints = {GRADE_B_COMMON_LOWER_LIMIT, GRADE_B_DEFAULT_VALUE, GRADE_B_MATH_UPPER_LIMIT})
-		void return_true_for_subject_math(int marks) {
+		void return_true_for_subject_maths(int marks) {
 			assertThat(helper.isGradeB(marks, true)).isTrue();
 		}
 
 		@ParameterizedTest
 		@ValueSource(ints = {GRADE_B_COMMON_LOWER_LIMIT - 1, GRADE_B_MATH_UPPER_LIMIT + 1})
-		void return_false_for_subject_math(int marks) {
+		void return_false_for_subject_maths(int marks) {
 			assertThat(helper.isGradeB(marks, true)).isFalse();
 		}
 
 		@ParameterizedTest
 		@ValueSource(ints = {GRADE_B_COMMON_LOWER_LIMIT, GRADE_B_DEFAULT_VALUE, GRADE_B_COMMON_UPPER_LIMIT})
-		void return_true_for_subject_non_math(int marks) {
+		void return_true_for_subject_non_maths(int marks) {
 			assertThat(helper.isGradeB(marks, false)).isTrue();
 		}
 
 
 		@ParameterizedTest
 		@ValueSource(ints = {GRADE_B_COMMON_LOWER_LIMIT - 1, GRADE_B_COMMON_UPPER_LIMIT + 1})
-		void return_false_for_subject_non_math(int marks) {
+		void return_false_for_subject_non_maths(int marks) {
 			assertThat(helper.isGradeB(marks, false)).isFalse();
 		}
 	}
