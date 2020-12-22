@@ -20,14 +20,14 @@ public class StudentHelperTest {
 
 		@ParameterizedTest
 		@ValueSource(ints = {GRADE_B_COMMON_LOWER_LIMIT, GRADE_B_DEFAULT_VALUE, GRADE_B_MATH_UPPER_LIMIT})
-		void isGradeB_should_return_true_for_subject_math(int marks) {
+		void return_true_for_subject_math(int marks) {
 			assertEquals(true, helper.isGradeB(marks, true));
 		}
 
 
 		@ParameterizedTest
 		@ValueSource(ints = {GRADE_B_COMMON_LOWER_LIMIT - 1, GRADE_B_MATH_UPPER_LIMIT + 1})
-		void isGradeB_should_return_false_for_subject_math(int marks) {
+		void return_false_for_subject_math(int marks) {
 			assertEquals(false, helper.isGradeB(marks, true));
 		}
 	}
