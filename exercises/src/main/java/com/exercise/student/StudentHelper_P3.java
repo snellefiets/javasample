@@ -1,5 +1,5 @@
 package com.exercise.student;
-public class StudentHelper {
+public class StudentHelper_P3 {
 
 	private static final int GRADE_B_LOWER_LIMIT = 51;
 	private static final int GRADE_B_UPPER_LIMIT = 80;
