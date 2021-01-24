@@ -19,6 +19,12 @@ public class YearServiceTest {
         void return_false(int givenYear) {
             assertThat(yearService.isLeapYear(givenYear)).isFalse();
         }
+
+        @ParameterizedTest
+        @ValueSource(ints = {2004, 2008})
+        void return_true(int givenYear) {
+            assertThat(yearService.isLeapYear(givenYear)).isTrue();
+        }
     }
 
 }
