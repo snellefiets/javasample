@@ -21,7 +21,7 @@ public class YearServiceTest {
         }
 
         @ParameterizedTest
-        @ValueSource(ints = {1800})
+        @ValueSource(ints = {1700, 1800, 1900})
         void return_false_dueTo_divisible_100_but_not_400(int givenYear) {
             assertThat(yearService.isLeapYear(givenYear)).isFalse();
         }
@@ -33,7 +33,7 @@ public class YearServiceTest {
         }
 
         @ParameterizedTest
-        @ValueSource(ints = {1600})
+        @ValueSource(ints = {1600, 2000})
         void return_true_dueTo_divisible_by_400(int givenYear) {
             assertThat(yearService.isLeapYear(givenYear)).isTrue();
         }
