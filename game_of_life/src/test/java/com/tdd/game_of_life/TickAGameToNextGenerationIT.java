@@ -13,6 +13,6 @@ public class TickAGameToNextGenerationIT {
         final GameService gameService = new GameService();
         gameService.start(givenWorld);
         final World resultingWorld = gameService.tick();
-        assertThat(resultingWorld.isCellALive(1,1)).isFalse();
+        assertThat(resultingWorld.isCellALive(0,0)).isFalse();
     }
 }
